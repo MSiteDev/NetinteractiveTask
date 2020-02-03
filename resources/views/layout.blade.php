@@ -28,7 +28,7 @@
                         <a class="nav-link" href="{{ route("users.list") }}">Users list</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Pricing</a>
+                        <a class="nav-link" href="{{ route("languages.list") }}">Languages list</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

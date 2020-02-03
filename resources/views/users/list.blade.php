@@ -21,7 +21,7 @@
                 @foreach($users as $user)
                     <tr>
                         <td>{{ $user->id }}</td>
-                        <td>{{ $user->getFullName() }}</td>
+                        <td><a href="{{ route("users.show", $user) }}">{{ $user->getFullName() }}</a></td>
                         <td>
                             {{ $user->getPeselObject()->getAge() }}
                             @if($user->getPeselObject()->getAge() < 18)
