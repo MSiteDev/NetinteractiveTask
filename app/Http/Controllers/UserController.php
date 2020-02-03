@@ -5,11 +5,24 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUserRequest;
 use App\Model\Language;
 use App\Model\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function index(Request $request)
+    {
+        $users = User::query()->latest();
+
+        if(in_array((int)$request->get("days"), [3, 7, 30]))
+            $users->whereDate("created_at", ">", Carbon::now()->subDays($request->get("days")));
+
+        return view("users.list", [
+            "users" => $users->paginate()
+        ]);
+    }
 
     public function show(User $user)
     {
